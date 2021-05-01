@@ -1,6 +1,5 @@
 #include <Anggur/System/Application.hpp>
 #include <Anggur/Helper/Log.hpp>
-#include <array>
 
 using namespace Anggur;
 using R = Renderer;
@@ -9,13 +8,10 @@ class App: public Application
 {
     Camera camera;
 
-    void OnConfigure(WindowConfig &config) override
+    void OnInitialize() override
     {
-        config.width = 480;
-        config.height = 360;
-
-        camera.SetRatio((float) config.width / (float) config.height);
-        camera.Scale(Vector(0.1, 0.1));
+        camera.SetRatio(mWindowConfig.GetRatio());
+        camera.Scale(Vector(0.01, 0.01));
     }
 
     void OnUpdate(float dx) override
@@ -23,7 +19,11 @@ class App: public Application
         R::ClearBackground();
         R::BeginScene(camera);
 
-        R::AddCircle(Vector(0, 0), 3, Color::purple);
+        R::AddCircle(Vector(0, 12), 10, Color::purple);
+        R::AddCircle(Vector(-12, -9), 10, Color::purple);
+        R::AddCircle(Vector(12, -9), 10, Color::purple);
+
+        R::AddPolyring({Vector(0, 40), Vector(-35, -22), Vector(35, -22)}, 1);
 
         R::EndScene();
     }
