@@ -8,10 +8,11 @@ class App: public Application
 {
     Camera camera;
 
-    void OnInitialize() override
+    void OnAttach() override
     {
-        camera.SetRatio(mWindowConfig.GetRatio());
-        camera.Scale(Vector(0.01, 0.01));
+        camera.SetRatio(mWindow->GetSize());
+        camera.Zoom(Vector(0.0125));
+        camera.Move(Vector(0.0, 0.125));
     }
 
     void OnUpdate(float dx) override
@@ -29,8 +30,4 @@ class App: public Application
     }
 };
 
-int main() 
-{
-	App app;
-	app.Run();
-}
+Anggur_EntryPoint(App);
