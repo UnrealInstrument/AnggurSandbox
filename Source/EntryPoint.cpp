@@ -43,15 +43,12 @@ class App: public Application
 
     std::vector<Pendulum> pendulums;
 
-    void OnInitialize() override
-    {
-        camera.SetRatio(mWindowConfig.GetRatio());
-        camera.Scale(Vector(0.02, 0.02));
-        camera.Translate(Vector(0.0, 0.8));
-    }
-
     void OnAttach() override
     {
+        camera.SetRatio(mWindow->GetSize());
+        camera.Zoom(Vector(0.02));
+        camera.Move(Vector(0.0, -0.8));
+
         Color wireA = Color(0.7, 0.7, 0.7);
         Color wireB = Color::white;
         Color bobA = Color::Lerp(Color::purple, Color::black, 0.5);
@@ -91,8 +88,4 @@ class App: public Application
     }
 };
 
-int main() 
-{
-        App app;
-        app.Run();
-}
+Anggur_EntryPoint(App);
