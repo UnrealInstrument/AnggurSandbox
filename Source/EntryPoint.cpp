@@ -46,8 +46,8 @@ class App: public Application
     void OnAttach() override
     {
         camera.SetRatio(mWindow->GetSize());
-        camera.Zoom(Vector(0.02));
-        camera.Move(Vector(0.0, -0.8));
+        camera.SetDistance((0.02));
+        camera.SetOffset(Vector(0.0, 0.8));
 
         Color wireA = Color(0.7, 0.7, 0.7);
         Color wireB = Color::white;
