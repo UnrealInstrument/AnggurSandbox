@@ -30,8 +30,6 @@ class App: public Application
         R::AddPolyring({Vector(0, 40), Vector(-35, -22), Vector(35, -22)}, 1);
 
         R::EndScene();
-
-        R::AddLine(Vector(1, 0), Vector(-1, 0), 0.001);
     }
 };
 
